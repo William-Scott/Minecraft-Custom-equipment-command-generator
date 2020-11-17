@@ -25,6 +25,26 @@ class Application(tk.Frame):
         self.create_widgets_crossbow()
         self.create_widgets_trident()
         self.create_widgets_fishingbobber()
+        #self.create_widgets_tab('方块',600)
+
+    '''
+    重构的模板函数，对性能无太大影响，暂搁置
+    def create_widgets_tab(self,name_zh,tabpos,ico_path,tachie_path,langs1,langs2):
+        tab = tk.Frame(self.tab_main)
+        tab.place(x=tabpos,y=30)
+        self.tab_main.add(tab, text=name_zh)
+
+        canvas_bg = tk.Canvas(tab, width=800, height=600, highlightthickness=0, borderwidth=0)
+        canvas_bg.place(x=0,y=0)
+        bgid = canvas_bg.create_image(385,263, image=self.bg_image)
+        image_ico = tk.PhotoImage(file=resource_path(ico_path))
+        image_tachie = tk.PhotoImage(file=resource_path(tachie_path))
+        create_ico = canvas_bg.create_image(250,280, image=image_ico)
+        create_tachie = canvas_bg.create_image(680,430, image=image_tachie)
+
+        LFselect = tk.LabelFrame(tab, text='选择%s:' %(name_zh), padx=5,pady=5)
+        LFselect.place(x=10,y=20)
+    '''
 
     def create_widgets_weapon(self):
         #武器的tab页面
@@ -102,6 +122,10 @@ class Application(tk.Frame):
         #武器的生成按钮
         self.button_weapon = tk.Button(self.tab_weapon,text='生成/Give命令',width=15, command=self.output_weapon)
         self.button_weapon.place(x=10,y=450)
+
+        self.str_num_weapon = tk.StringVar()
+        self.str_num_weapon.set('当前命令包含的字符个数为：')
+        self.canvas_str_num_weapon = self.canvas_bg_weapon.create_text(10,435, text=self.str_num_weapon.get(), anchor = tk.W)
 
     def create_widgets_tool(self):
         #工具的tab页面
@@ -189,6 +213,10 @@ class Application(tk.Frame):
         self.Text_tool.place(x=10,y=350)
         self.button_tool = tk.Button(self.tab_tool,text='生成/Give命令',width=15, command=self.output_tool)
         self.button_tool.place(x=10,y=450)
+
+        self.str_num_tool = tk.StringVar()
+        self.str_num_tool.set('当前命令包含的字符个数为：')
+        self.canvas_str_num_tool = self.canvas_bg_tool.create_text(10,435, text=self.str_num_tool.get(), anchor = tk.W)
 
     def create_widgets_armor(self):
         self.tab_armor = tk.Frame(self.tab_main)
@@ -283,6 +311,10 @@ class Application(tk.Frame):
         self.button_armor = tk.Button(self.tab_armor,text='生成/Give命令',width=15, command=self.output_armor)
         self.button_armor.place(x=10,y=450)
 
+        self.str_num_armor = tk.StringVar()
+        self.str_num_armor.set('当前命令包含的字符个数为：')
+        self.canvas_str_num_armor = self.canvas_bg_armor.create_text(10,435, text=self.str_num_armor.get(), anchor = tk.W)
+
     def create_widgets_bow(self):
         self.tab_bow = tk.Frame(self.tab_main)
         self.tab_bow.place(x=300,y=30)
@@ -346,6 +378,10 @@ class Application(tk.Frame):
         self.button_bow = tk.Button(self.tab_bow,text='生成/Give命令',width=15, command=self.output_bow)
         self.button_bow.place(x=10,y=450)
 
+        self.str_num_bow = tk.StringVar()
+        self.str_num_bow.set('当前命令包含的字符个数为：')
+        self.canvas_str_num_bow = self.canvas_bg_bow.create_text(10,435, text=self.str_num_bow.get(), anchor = tk.W)
+
     def create_widgets_crossbow(self):
         self.tab_crossbow = tk.Frame(self.tab_main)
         self.tab_crossbow.place(x=400,y=30)
@@ -407,6 +443,10 @@ class Application(tk.Frame):
         self.Text_crossbow.place(x=10,y=350)
         self.button_crossbow = tk.Button(self.tab_crossbow,text='生成/Give命令',width=15, command=self.output_crossbow)
         self.button_crossbow.place(x=10,y=450)
+
+        self.str_num_crossbow = tk.StringVar()
+        self.str_num_crossbow.set('当前命令包含的字符个数为：')
+        self.canvas_str_num_crossbow = self.canvas_bg_crossbow.create_text(10,435, text=self.str_num_crossbow.get(), anchor = tk.W)
 
     def create_widgets_trident(self):
         self.tab_trident = tk.Frame(self.tab_main)
@@ -471,6 +511,10 @@ class Application(tk.Frame):
         self.button_trident = tk.Button(self.tab_trident,text='生成/Give命令',width=15, command=self.output_trident)
         self.button_trident.place(x=10,y=450)
 
+        self.str_num_trident = tk.StringVar()
+        self.str_num_trident.set('当前命令包含的字符个数为：')
+        self.canvas_str_num_trident = self.canvas_bg_trident.create_text(10,435, text=self.str_num_trident.get(), anchor = tk.W)
+
     def create_widgets_fishingbobber(self):
         self.tab_fishingbobber = tk.Frame(self.tab_main)
         self.tab_fishingbobber.place(x=500,y=30)
@@ -531,6 +575,10 @@ class Application(tk.Frame):
         self.Text_fishingbobber.place(x=10,y=350)
         self.button_fishingbobber = tk.Button(self.tab_fishingbobber,text='生成/Give命令',width=15, command=self.output_fishingbobber)
         self.button_fishingbobber.place(x=10,y=450)
+
+        self.str_num_fishingbobber = tk.StringVar()
+        self.str_num_fishingbobber.set('当前命令包含的字符个数为：')
+        self.canvas_str_num_fishingbobber = self.canvas_bg_fishingbobber.create_text(10,435, text=self.str_num_fishingbobber.get(), anchor = tk.W)
 
     strlink_weapon1 = []
     strlink_weapon2 = ""
@@ -820,7 +868,6 @@ class Application(tk.Frame):
     strlink_fishingbobber4 = ""
 
     def string_splicing_fishingbobber(self):
-        print("fishingbobber")
         self.Text_fishingbobber.delete(1.0,'end')
 
         array_enchant_str = []
@@ -866,36 +913,58 @@ class Application(tk.Frame):
         global strlink_weapon4
         self.Text_weapon.delete(1.0,'end')
         self.Text_weapon.insert(1.0,self.strlink_weapon4)
+        self.str_num_weapon.set('当前命令包含的字符个数为：%s' %(len(self.strlink_weapon4)))
+        self.canvas_bg_weapon.delete(self.canvas_str_num_weapon)
+        self.canvas_str_num_weapon = self.canvas_bg_weapon.create_text(10,435, text=self.str_num_weapon.get(), anchor = tk.W)
+
 
     def output_tool(self):
         global strlink_tool4
         self.Text_tool.delete(1.0,'end')
         self.Text_tool.insert(1.0,self.strlink_tool4)
+        self.str_num_tool.set('当前命令包含的字符个数为：%s' %(len(self.strlink_tool4)))
+        self.canvas_bg_tool.delete(self.canvas_str_num_tool)
+        self.canvas_str_num_tool = self.canvas_bg_tool.create_text(10,435, text=self.str_num_tool.get(), anchor = tk.W)
 
     def output_armor(self):
         global strlink_armor4
         self.Text_armor.delete(1.0,'end')
         self.Text_armor.insert(1.0,self.strlink_armor4)
+        self.str_num_armor.set('当前命令包含的字符个数为：%s' %(len(self.strlink_armor4)))
+        self.canvas_bg_armor.delete(self.canvas_str_num_armor)
+        self.canvas_str_num_armor = self.canvas_bg_armor.create_text(10,435, text=self.str_num_armor.get(), anchor = tk.W)
 
     def output_bow(self):
         global strlink_bow4
         self.Text_bow.delete(1.0,'end')
         self.Text_bow.insert(1.0,self.strlink_bow4)
+        self.str_num_bow.set('当前命令包含的字符个数为：%s' %(len(self.strlink_bow4)))
+        self.canvas_bg_bow.delete(self.canvas_str_num_bow)
+        self.canvas_str_num_bow = self.canvas_bg_bow.create_text(10,435, text=self.str_num_bow.get(), anchor = tk.W)
 
     def output_crossbow(self):
         global strlink_crossbow4
         self.Text_crossbow.delete(1.0,'end')
         self.Text_crossbow.insert(1.0,self.strlink_crossbow4)
+        self.str_num_crossbow.set('当前命令包含的字符个数为：%s' %(len(self.strlink_crossbow4)))
+        self.canvas_bg_crossbow.delete(self.canvas_str_num_crossbow)
+        self.canvas_str_num_crossbow = self.canvas_bg_crossbow.create_text(10,435, text=self.str_num_crossbow.get(), anchor = tk.W)
 
     def output_trident(self):
         global strlink_trident4
         self.Text_trident.delete(1.0,'end')
         self.Text_trident.insert(1.0,self.strlink_trident4)
+        self.str_num_trident.set('当前命令包含的字符个数为：%s' %(len(self.strlink_trident4)))
+        self.canvas_bg_trident.delete(self.canvas_str_num_trident)
+        self.canvas_str_num_trident = self.canvas_bg_trident.create_text(10,435, text=self.str_num_trident.get(), anchor = tk.W)
 
     def output_fishingbobber(self):
         global strlink_fishingbobber4
         self.Text_fishingbobber.delete(1.0,'end')
         self.Text_fishingbobber.insert(1.0,self.strlink_fishingbobber4)
+        self.str_num_fishingbobber.set('命令包含的字符个数为：%s' %(len(self.strlink_fishingbobber4)))
+        self.canvas_bg_fishingbobber.delete(self.canvas_str_num_fishingbobber)
+        self.canvas_str_num_fishingbobber = self.canvas_bg_fishingbobber.create_text(10,435, text=self.str_num_fishingbobber.get(), anchor = tk.W)
 
 def resource_path(relative_path):
     if getattr(sys, 'frozen', False):
