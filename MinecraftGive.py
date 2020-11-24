@@ -116,16 +116,24 @@ class Application(tk.Frame):
         self.str_weapon_extra.set("0")
         self.weapon_extra = tk.Checkbutton(self.LFselect_weapon_extra, text='不损', onvalue="Unbreakable:1", variable=self.str_weapon_extra, command=self.string_splicing_weapon)
         self.weapon_extra.pack()
+        #武器名输入框
+        self.LFselect_weapon_name = tk.LabelFrame(self.tab_weapon, text='输入武器名称', padx=5,pady=5)
+        self.LFselect_weapon_name.place(x=10,y=350)
+        self.str_weapon_name = tk.StringVar()
+        self.str_weapon_name.set("")
+        self.Text_weapon_name = tk.Entry(self.LFselect_weapon_name, textvariable=self.str_weapon_name, width=30, insertwidth=1)
+        self.Text_weapon_name.pack()
+        self.Text_weapon_name.bind("<KeyRelease>", self.string_splicing_weapon)
         #武器的输出框
         self.Text_weapon = tk.Text(self.tab_weapon,width=80,height=5)
-        self.Text_weapon.place(x=10,y=350)
+        self.Text_weapon.place(x=10,y=410)
         #武器的生成按钮
         self.button_weapon = tk.Button(self.tab_weapon,text='生成/Give命令',width=15, command=self.output_weapon)
-        self.button_weapon.place(x=10,y=450)
-
+        self.button_weapon.place(x=10,y=510)
+        #长度计数
         self.str_num_weapon = tk.StringVar()
         self.str_num_weapon.set('当前命令包含的字符个数为：')
-        self.canvas_str_num_weapon = self.canvas_bg_weapon.create_text(10,435, text=self.str_num_weapon.get(), anchor = tk.W)
+        self.canvas_str_num_weapon = self.canvas_bg_weapon.create_text(10,495, text=self.str_num_weapon.get(), anchor = tk.W)
 
     def create_widgets_tool(self):
         #工具的tab页面
@@ -209,14 +217,22 @@ class Application(tk.Frame):
         self.tool_extra = tk.Checkbutton(self.LFselect_tool_extra, text='不损', onvalue='Unbreakable:1', variable=self.str_tool_extra, command=self.string_splicing_tool)
         self.tool_extra.pack()
 
+        self.LFselect_tool_name = tk.LabelFrame(self.tab_tool, text='输入工具名称', padx=5,pady=5)
+        self.LFselect_tool_name.place(x=10,y=350)
+        self.str_tool_name = tk.StringVar()
+        self.str_tool_name.set("")
+        self.Text_tool_name = tk.Entry(self.LFselect_tool_name, textvariable=self.str_tool_name, width=30, insertwidth=1)
+        self.Text_tool_name.pack()
+        self.Text_tool_name.bind("<KeyRelease>", self.string_splicing_tool)
+
         self.Text_tool = tk.Text(self.tab_tool,width=80,height=5)
-        self.Text_tool.place(x=10,y=350)
+        self.Text_tool.place(x=10,y=410)
         self.button_tool = tk.Button(self.tab_tool,text='生成/Give命令',width=15, command=self.output_tool)
-        self.button_tool.place(x=10,y=450)
+        self.button_tool.place(x=10,y=510)
 
         self.str_num_tool = tk.StringVar()
         self.str_num_tool.set('当前命令包含的字符个数为：')
-        self.canvas_str_num_tool = self.canvas_bg_tool.create_text(10,435, text=self.str_num_tool.get(), anchor = tk.W)
+        self.canvas_str_num_tool = self.canvas_bg_tool.create_text(10,495, text=self.str_num_tool.get(), anchor = tk.W)
 
     def create_widgets_armor(self):
         self.tab_armor = tk.Frame(self.tab_main)
@@ -306,14 +322,22 @@ class Application(tk.Frame):
         self.armor_extra = tk.Checkbutton(self.LFselect_armor_extra, text='不损', onvalue='Unbreakable:1', variable=self.str_armor_extra, command=self.string_splicing_armor)
         self.armor_extra.pack()
 
+        self.LFselect_armor_name = tk.LabelFrame(self.tab_armor, text='输入盔甲名称', padx=5,pady=5)
+        self.LFselect_armor_name.place(x=10,y=350)
+        self.str_armor_name = tk.StringVar()
+        self.str_armor_name.set("")
+        self.Text_armor_name = tk.Entry(self.LFselect_armor_name, textvariable=self.str_armor_name, width=30, insertwidth=1)
+        self.Text_armor_name.pack()
+        self.Text_armor_name.bind("<KeyRelease>", self.string_splicing_armor)
+
         self.Text_armor = tk.Text(self.tab_armor,width=80,height=5)
-        self.Text_armor.place(x=10,y=350)
+        self.Text_armor.place(x=10,y=410)
         self.button_armor = tk.Button(self.tab_armor,text='生成/Give命令',width=15, command=self.output_armor)
-        self.button_armor.place(x=10,y=450)
+        self.button_armor.place(x=10,y=510)
 
         self.str_num_armor = tk.StringVar()
         self.str_num_armor.set('当前命令包含的字符个数为：')
-        self.canvas_str_num_armor = self.canvas_bg_armor.create_text(10,435, text=self.str_num_armor.get(), anchor = tk.W)
+        self.canvas_str_num_armor = self.canvas_bg_armor.create_text(10,495, text=self.str_num_armor.get(), anchor = tk.W)
 
     def create_widgets_bow(self):
         self.tab_bow = tk.Frame(self.tab_main)
@@ -373,14 +397,22 @@ class Application(tk.Frame):
         self.bow_extra = tk.Checkbutton(self.LFselect_bow_extra, text='不损', onvalue="Unbreakable:1", variable=self.str_bow_extra, command=self.string_splicing_bow)
         self.bow_extra.pack()
 
+        self.LFselect_bow_name = tk.LabelFrame(self.tab_bow, text='输入弓名称', padx=5,pady=5)
+        self.LFselect_bow_name.place(x=10,y=350)
+        self.str_bow_name = tk.StringVar()
+        self.str_bow_name.set("")
+        self.Text_bow_name = tk.Entry(self.LFselect_bow_name, textvariable=self.str_bow_name, width=30, insertwidth=1)
+        self.Text_bow_name.pack()
+        self.Text_bow_name.bind("<KeyRelease>", self.string_splicing_bow)
+
         self.Text_bow = tk.Text(self.tab_bow,width=80,height=5)
-        self.Text_bow.place(x=10,y=350)
+        self.Text_bow.place(x=10,y=410)
         self.button_bow = tk.Button(self.tab_bow,text='生成/Give命令',width=15, command=self.output_bow)
-        self.button_bow.place(x=10,y=450)
+        self.button_bow.place(x=10,y=510)
 
         self.str_num_bow = tk.StringVar()
         self.str_num_bow.set('当前命令包含的字符个数为：')
-        self.canvas_str_num_bow = self.canvas_bg_bow.create_text(10,435, text=self.str_num_bow.get(), anchor = tk.W)
+        self.canvas_str_num_bow = self.canvas_bg_bow.create_text(10,495, text=self.str_num_bow.get(), anchor = tk.W)
 
     def create_widgets_crossbow(self):
         self.tab_crossbow = tk.Frame(self.tab_main)
@@ -439,14 +471,22 @@ class Application(tk.Frame):
         self.crossbow_extra = tk.Checkbutton(self.LFselect_crossbow_extra, text='不损', onvalue="Unbreakable:1", variable=self.str_crossbow_extra, command=self.string_splicing_crossbow)
         self.crossbow_extra.pack()
 
+        self.LFselect_crossbow_name = tk.LabelFrame(self.tab_crossbow, text='输入弩名称', padx=5,pady=5)
+        self.LFselect_crossbow_name.place(x=10,y=350)
+        self.str_crossbow_name = tk.StringVar()
+        self.str_crossbow_name.set("")
+        self.Text_crossbow_name = tk.Entry(self.LFselect_crossbow_name, textvariable=self.str_crossbow_name, width=30, insertwidth=1)
+        self.Text_crossbow_name.pack()
+        self.Text_crossbow_name.bind("<KeyRelease>", self.string_splicing_crossbow)
+
         self.Text_crossbow = tk.Text(self.tab_crossbow,width=80,height=5)
-        self.Text_crossbow.place(x=10,y=350)
+        self.Text_crossbow.place(x=10,y=410)
         self.button_crossbow = tk.Button(self.tab_crossbow,text='生成/Give命令',width=15, command=self.output_crossbow)
-        self.button_crossbow.place(x=10,y=450)
+        self.button_crossbow.place(x=10,y=510)
 
         self.str_num_crossbow = tk.StringVar()
         self.str_num_crossbow.set('当前命令包含的字符个数为：')
-        self.canvas_str_num_crossbow = self.canvas_bg_crossbow.create_text(10,435, text=self.str_num_crossbow.get(), anchor = tk.W)
+        self.canvas_str_num_crossbow = self.canvas_bg_crossbow.create_text(10,495, text=self.str_num_crossbow.get(), anchor = tk.W)
 
     def create_widgets_trident(self):
         self.tab_trident = tk.Frame(self.tab_main)
@@ -506,14 +546,22 @@ class Application(tk.Frame):
         self.trident_extra = tk.Checkbutton(self.LFselect_trident_extra, text='不损', onvalue="Unbreakable:1", variable=self.str_trident_extra, command=self.string_splicing_trident)
         self.trident_extra.pack()
 
+        self.LFselect_trident_name = tk.LabelFrame(self.tab_trident, text='输入三叉戟名称', padx=5,pady=5)
+        self.LFselect_trident_name.place(x=10,y=350)
+        self.str_trident_name = tk.StringVar()
+        self.str_trident_name.set("")
+        self.Text_trident_name = tk.Entry(self.LFselect_trident_name, textvariable=self.str_trident_name, width=30, insertwidth=1)
+        self.Text_trident_name.pack()
+        self.Text_trident_name.bind("<KeyRelease>", self.string_splicing_trident)
+
         self.Text_trident = tk.Text(self.tab_trident,width=80,height=5)
-        self.Text_trident.place(x=10,y=350)
+        self.Text_trident.place(x=10,y=410)
         self.button_trident = tk.Button(self.tab_trident,text='生成/Give命令',width=15, command=self.output_trident)
-        self.button_trident.place(x=10,y=450)
+        self.button_trident.place(x=10,y=510)
 
         self.str_num_trident = tk.StringVar()
         self.str_num_trident.set('当前命令包含的字符个数为：')
-        self.canvas_str_num_trident = self.canvas_bg_trident.create_text(10,435, text=self.str_num_trident.get(), anchor = tk.W)
+        self.canvas_str_num_trident = self.canvas_bg_trident.create_text(10,495, text=self.str_num_trident.get(), anchor = tk.W)
 
     def create_widgets_fishingbobber(self):
         self.tab_fishingbobber = tk.Frame(self.tab_main)
@@ -571,21 +619,30 @@ class Application(tk.Frame):
         self.fishingbobber_extra = tk.Checkbutton(self.LFselect_fishingbobber_extra, text='不损', onvalue="Unbreakable:1", variable=self.str_fishingbobber_extra, command=self.string_splicing_fishingbobber)
         self.fishingbobber_extra.pack()
 
+        self.LFselect_fishingbobber_name = tk.LabelFrame(self.tab_fishingbobber, text='输入钓鱼竿名称', padx=5,pady=5)
+        self.LFselect_fishingbobber_name.place(x=10,y=350)
+        self.str_fishingbobber_name = tk.StringVar()
+        self.str_fishingbobber_name.set("")
+        self.Text_fishingbobber_name = tk.Entry(self.LFselect_fishingbobber_name, textvariable=self.str_fishingbobber_name, width=30, insertwidth=1)
+        self.Text_fishingbobber_name.pack()
+        self.Text_fishingbobber_name.bind("<KeyRelease>", self.string_splicing_fishingbobber)
+
         self.Text_fishingbobber = tk.Text(self.tab_fishingbobber,width=80,height=5)
-        self.Text_fishingbobber.place(x=10,y=350)
+        self.Text_fishingbobber.place(x=10,y=410)
         self.button_fishingbobber = tk.Button(self.tab_fishingbobber,text='生成/Give命令',width=15, command=self.output_fishingbobber)
-        self.button_fishingbobber.place(x=10,y=450)
+        self.button_fishingbobber.place(x=10,y=510)
 
         self.str_num_fishingbobber = tk.StringVar()
         self.str_num_fishingbobber.set('当前命令包含的字符个数为：')
-        self.canvas_str_num_fishingbobber = self.canvas_bg_fishingbobber.create_text(10,435, text=self.str_num_fishingbobber.get(), anchor = tk.W)
+        self.canvas_str_num_fishingbobber = self.canvas_bg_fishingbobber.create_text(10,495, text=self.str_num_fishingbobber.get(), anchor = tk.W)
 
     strlink_weapon1 = []
     strlink_weapon2 = ""
-    strlink_weapon3 = ""
+    strlink_weapon3 = []
     strlink_weapon4 = ""
+    strlink_waepon_fin = ""
 
-    def string_splicing_weapon(self):
+    def string_splicing_weapon(self, event=0):
         self.Text_weapon.delete(1.0,'end')
         #转录地址数组里的值
         array_enchant_str = []
@@ -596,12 +653,14 @@ class Application(tk.Frame):
         global strlink_weapon2
         global strlink_weapon3
         global strlink_weapon4
+        global strlink_waepon_fin
         index = 0
         #全局变量初始化
         self.strlink_weapon1 = []
         self.strlink_weapon2 = ""
-        self.strlink_weapon3 = ""
+        self.strlink_weapon3 = []
         self.strlink_weapon4 = ""
+        self.strlink_waepon_fin = ""
 
         for str_ in self.array_weapon_enchant:
             if str_.get() != "0":
@@ -617,22 +676,28 @@ class Application(tk.Frame):
                     self.strlink_weapon2 = self.strlink_weapon2 + ','
             self.strlink_weapon2 = self.strlink_weapon2 + ']'
 
-        if self.str_weapon_extra.get() != "0" and self.strlink_weapon2 != "":
-            self.strlink_weapon3 = '{' + self.str_weapon_extra.get() + ',' + self.strlink_weapon2 + '}'
-        elif self.str_weapon_extra.get() == "0" and self.strlink_weapon2 != "":
-            self.strlink_weapon3 = '{' + self.strlink_weapon2 + '}'
-        elif self.str_weapon_extra.get() != "0" and self.strlink_weapon2 == "":
-            self.strlink_weapon3 = '{' + self.str_weapon_extra.get() + '}'
+        if self.str_weapon_extra.get() != "0":
+            self.strlink_weapon3.append(self.str_weapon_extra.get())
+        if self.str_weapon_name.get() != "":
+            self.strlink_weapon3.append('display:{Name:"[{\\"text\":\\"%s\\"}]"}' %(self.str_weapon_name.get()))
+        if self.strlink_weapon2 != "":
+            self.strlink_weapon3.append(self.strlink_weapon2)
+
+        for str_ in self.strlink_weapon3:
+            self.strlink_weapon4 = self.strlink_weapon4 + str_
+            if str_ != self.strlink_weapon3[-1]:
+                self.strlink_weapon4 = self.strlink_weapon4+ ','
 
         if self.str_weapon.get() != "0":
-            self.strlink_weapon4 = '/give @s ' + self.str_weapon.get() + self.strlink_weapon3 + ' 1'
+            self.strlink_waepon_fin = '/give @s ' + self.str_weapon.get() + '{' + self.strlink_weapon4 + '} 1'
 
     strlink_tool1 = []
     strlink_tool2 = ""
-    strlink_tool3 = ""
+    strlink_tool3 = []
     strlink_tool4 = ""
+    strlink_tool_fin = ""
 
-    def string_splicing_tool(self):
+    def string_splicing_tool(self, event=0):
         self.Text_tool.delete(1.0,'end')
 
         array_enchant_str = []
@@ -643,12 +708,14 @@ class Application(tk.Frame):
         global strlink_tool2
         global strlink_tool3
         global strlink_tool4
+        global strlink_tool_fin
         index = 0
 
         self.strlink_tool1 = []
         self.strlink_tool2 = ""
-        self.strlink_tool2 = ""
-        self.strlink_tool2 = ""
+        self.strlink_tool3 = []
+        self.strlink_tool4 = ""
+        self.strlink_tool_fin = ""
 
         for str_ in self.array_tool_enchant:
             if str_.get() != "0":
@@ -664,22 +731,28 @@ class Application(tk.Frame):
                     self.strlink_tool2 = self.strlink_tool2 + ','
             self.strlink_tool2 = self.strlink_tool2 + ']'
 
-        if self.str_tool_extra.get() != "0" and self.strlink_tool2 != "":
-            self.strlink_tool3 = '{' + self.str_tool_extra.get() + ',' + self.strlink_tool2 + '}'
-        elif self.str_tool_extra.get() == "0" and self.strlink_tool2 != "":
-            self.strlink_tool3 = '{' + self.strlink_tool2 + '}'
-        elif self.str_tool_extra.get() != "0" and self.strlink_tool2 == "":
-            self.strlink_tool3 = '{' + self.str_tool_extra.get() + '}'
+        if self.str_tool_extra.get() != "0":
+            self.strlink_tool3.append(self.str_tool_extra.get())
+        if self.str_tool_name.get() != "":
+            self.strlink_tool3.append('display:{Name:"[{\\"text\":\\"%s\\"}]"}' %(self.str_tool_name.get()))
+        if self.strlink_tool2 != "":
+            self.strlink_tool3.append(self.strlink_tool2)
+
+        for str_ in self.strlink_tool3:
+            self.strlink_tool4 = self.strlink_tool4 + str_
+            if str_ != self.strlink_tool3[-1]:
+                self.strlink_tool4 = self.strlink_tool4+ ','
 
         if self.str_tool.get() != "0":
-            self.strlink_tool4 = '/give @s ' + self.str_tool.get() + self.strlink_tool3 + ' 1'
+            self.strlink_tool_fin = '/give @s ' + self.str_tool.get() + '{' + self.strlink_tool4 + '} 1'
 
     strlink_armor1 = []
     strlink_armor2 = ""
-    strlink_armor3 = ""
+    strlink_armor3 = []
     strlink_armor4 = ""
+    strlink_armor_fin = ""
 
-    def string_splicing_armor(self):
+    def string_splicing_armor(self, event=0):
         self.Text_armor.delete(1.0,'end')
 
         array_enchant_str = []
@@ -690,12 +763,14 @@ class Application(tk.Frame):
         global strlink_armor2
         global strlink_armor3
         global strlink_armor4
+        global strlink_armor_fin
         index = 0
 
         self.strlink_armor1 = []
         self.strlink_armor2 = ""
-        self.strlink_armor2 = ""
-        self.strlink_armor2 = ""
+        self.strlink_armor3 = []
+        self.strlink_armor4 = ""
+        self.strlink_armor_fin = ""
 
         for str_ in self.array_armor_enchant:
             if str_.get() != "0":
@@ -711,22 +786,28 @@ class Application(tk.Frame):
                     self.strlink_armor2 = self.strlink_armor2 + ','
             self.strlink_armor2 = self.strlink_armor2 + ']'
 
-        if self.str_armor_extra.get() != "0" and self.strlink_armor2 != "":
-            self.strlink_armor3 = '{' + self.str_armor_extra.get() + ',' + self.strlink_armor2 + '}'
-        elif self.str_armor_extra.get() == "0" and self.strlink_armor2 != "":
-            self.strlink_armor3 = '{' + self.strlink_armor2 + '}'
-        elif self.str_armor_extra.get() != "0" and self.strlink_armor2 == "":
-            self.strlink_armor3 = '{' + self.str_armor_extra.get() + '}'
+        if self.str_armor_extra.get() != "0":
+            self.strlink_armor3.append(self.str_armor_extra.get())
+        if self.str_armor_name.get() != "":
+            self.strlink_armor3.append('display:{Name:"[{\\"text\":\\"%s\\"}]"}' %(self.str_armor_name.get()))
+        if self.strlink_armor2 != "":
+            self.strlink_armor3.append(self.strlink_armor2)
+
+        for str_ in self.strlink_armor3:
+            self.strlink_armor4 = self.strlink_armor4 + str_
+            if str_ != self.strlink_armor3[-1]:
+                self.strlink_armor4 = self.strlink_armor4+ ','
 
         if self.str_armor.get() != "0":
-            self.strlink_armor4 = '/give @s ' + self.str_armor.get() + self.strlink_armor3 + ' 1'
+            self.strlink_armor_fin = '/give @s ' + self.str_armor.get() + '{' + self.strlink_armor4 + '} 1'
 
     strlink_bow1 = []
     strlink_bow2 = ""
-    strlink_bow3 = ""
+    strlink_bow3 = []
     strlink_bow4 = ""
+    strlink_bow_fin = ""
 
-    def string_splicing_bow(self):
+    def string_splicing_bow(self, event=0):
         self.Text_bow.delete(1.0,'end')
 
         array_enchant_str = []
@@ -737,12 +818,14 @@ class Application(tk.Frame):
         global strlink_bow2
         global strlink_bow3
         global strlink_bow4
+        global strlink_bow_fin
         index = 0
 
         self.strlink_bow1 = []
         self.strlink_bow2 = ""
-        self.strlink_bow2 = ""
-        self.strlink_bow2 = ""
+        self.strlink_bow3 = []
+        self.strlink_bow4 = ""
+        self.strlink_bow_fin = ""
 
         for str_ in self.array_bow_enchant:
             if str_.get() != "0":
@@ -758,22 +841,28 @@ class Application(tk.Frame):
                     self.strlink_bow2 = self.strlink_bow2 + ','
             self.strlink_bow2 = self.strlink_bow2 + ']'
 
-        if self.str_bow_extra.get() != "0" and self.strlink_bow2 != "":
-            self.strlink_bow3 = '{' + self.str_bow_extra.get() + ',' + self.strlink_bow2 + '}'
-        elif self.str_bow_extra.get() == "0" and self.strlink_bow2 != "":
-            self.strlink_bow3 = '{' + self.strlink_bow2 + '}'
-        elif self.str_bow_extra.get() != "0" and self.strlink_bow2 == "":
-            self.strlink_bow3 = '{' + self.str_bow_extra.get() + '}'
+        if self.str_bow_extra.get() != "0":
+            self.strlink_bow3.append(self.str_bow_extra.get())
+        if self.str_bow_name.get() != "":
+            self.strlink_bow3.append('display:{Name:"[{\\"text\":\\"%s\\"}]"}' %(self.str_bow_name.get()))
+        if self.strlink_bow2 != "":
+            self.strlink_bow3.append(self.strlink_bow2)
+
+        for str_ in self.strlink_bow3:
+            self.strlink_bow4 = self.strlink_bow4 + str_
+            if str_ != self.strlink_bow3[-1]:
+                self.strlink_bow4 = self.strlink_bow4+ ','
 
         if self.str_bow.get() != "0":
-            self.strlink_bow4 = '/give @s ' + self.str_bow.get() + self.strlink_bow3 + ' 1'
+            self.strlink_bow_fin = '/give @s ' + self.str_bow.get() + '{' + self.strlink_bow4 + '} 1'
 
     strlink_crossbow1 = []
     strlink_crossbow2 = ""
-    strlink_crossbow3 = ""
+    strlink_crossbow3 = []
     strlink_crossbow4 = ""
+    strlink_crossbow_fin = ""
 
-    def string_splicing_crossbow(self):
+    def string_splicing_crossbow(self, event=0):
         self.Text_crossbow.delete(1.0,'end')
 
         array_enchant_str = []
@@ -784,12 +873,14 @@ class Application(tk.Frame):
         global strlink_crossbow2
         global strlink_crossbow3
         global strlink_crossbow4
+        global strlink_crossbow_fin
         index = 0
 
         self.strlink_crossbow1 = []
         self.strlink_crossbow2 = ""
-        self.strlink_crossbow2 = ""
-        self.strlink_crossbow2 = ""
+        self.strlink_crossbow3 = []
+        self.strlink_crossbow4 = ""
+        self.strlink_crossbow_fin = ""
 
         for str_ in self.array_crossbow_enchant:
             if str_.get() != "0":
@@ -805,22 +896,28 @@ class Application(tk.Frame):
                     self.strlink_crossbow2 = self.strlink_crossbow2 + ','
             self.strlink_crossbow2 = self.strlink_crossbow2 + ']'
 
-        if self.str_crossbow_extra.get() != "0" and self.strlink_crossbow2 != "":
-            self.strlink_crossbow3 = '{' + self.str_crossbow_extra.get() + ',' + self.strlink_crossbow2 + '}'
-        elif self.str_crossbow_extra.get() == "0" and self.strlink_crossbow2 != "":
-            self.strlink_crossbow3 = '{' + self.strlink_crossbow2 + '}'
-        elif self.str_crossbow_extra.get() != "0" and self.strlink_crossbow2 == "":
-            self.strlink_crossbow3 = '{' + self.str_crossbow_extra.get() + '}'
+        if self.str_crossbow_extra.get() != "0":
+            self.strlink_crossbow3.append(self.str_crossbow_extra.get())
+        if self.str_crossbow_name.get() != "":
+            self.strlink_crossbow3.append('display:{Name:"[{\\"text\":\\"%s\\"}]"}' %(self.str_crossbow_name.get()))
+        if self.strlink_crossbow2 != "":
+            self.strlink_crossbow3.append(self.strlink_crossbow2)
+
+        for str_ in self.strlink_crossbow3:
+            self.strlink_crossbow4 = self.strlink_crossbow4 + str_
+            if str_ != self.strlink_crossbow3[-1]:
+                self.strlink_crossbow4 = self.strlink_crossbow4+ ','
 
         if self.str_crossbow.get() != "0":
-            self.strlink_crossbow4 = '/give @s ' + self.str_crossbow.get() + self.strlink_crossbow3 + ' 1'
+            self.strlink_crossbow_fin = '/give @s ' + self.str_crossbow.get() + '{' + self.strlink_crossbow4 + '} 1'
 
     strlink_trident1 = []
     strlink_trident2 = ""
-    strlink_trident3 = ""
+    strlink_trident3 = []
     strlink_trident4 = ""
+    strlink_trident_fin = ""
 
-    def string_splicing_trident(self):
+    def string_splicing_trident(self, event=0):
         self.Text_trident.delete(1.0,'end')
 
         array_enchant_str = []
@@ -831,12 +928,14 @@ class Application(tk.Frame):
         global strlink_trident2
         global strlink_trident3
         global strlink_trident4
+        global strlink_trident_fin
         index = 0
 
         self.strlink_trident1 = []
         self.strlink_trident2 = ""
-        self.strlink_trident2 = ""
-        self.strlink_trident2 = ""
+        self.strlink_trident3 = []
+        self.strlink_trident4 = ""
+        self.strlink_trident_fin = ""
 
         for str_ in self.array_trident_enchant:
             if str_.get() != "0":
@@ -852,22 +951,28 @@ class Application(tk.Frame):
                     self.strlink_trident2 = self.strlink_trident2 + ','
             self.strlink_trident2 = self.strlink_trident2 + ']'
 
-        if self.str_trident_extra.get() != "0" and self.strlink_trident2 != "":
-            self.strlink_trident3 = '{' + self.str_trident_extra.get() + ',' + self.strlink_trident2 + '}'
-        elif self.str_trident_extra.get() == "0" and self.strlink_trident2 != "":
-            self.strlink_trident3 = '{' + self.strlink_trident2 + '}'
-        elif self.str_trident_extra.get() != "0" and self.strlink_trident2 == "":
-            self.strlink_trident3 = '{' + self.str_trident_extra.get() + '}'
+        if self.str_trident_extra.get() != "0":
+            self.strlink_trident3.append(self.str_trident_extra.get())
+        if self.str_trident_name.get() != "":
+            self.strlink_trident3.append('display:{Name:"[{\\"text\":\\"%s\\"}]"}' %(self.str_trident_name.get()))
+        if self.strlink_trident2 != "":
+            self.strlink_trident3.append(self.strlink_trident2)
+
+        for str_ in self.strlink_trident3:
+            self.strlink_trident4 = self.strlink_trident4 + str_
+            if str_ != self.strlink_trident3[-1]:
+                self.strlink_trident4 = self.strlink_trident4+ ','
 
         if self.str_trident.get() != "0":
-            self.strlink_trident4 = '/give @s ' + self.str_trident.get() + self.strlink_trident3 + ' 1'
+            self.strlink_trident_fin = '/give @s ' + self.str_trident.get() + '{' + self.strlink_trident4 + '} 1'
 
     strlink_fishingbobber1 = []
     strlink_fishingbobber2 = ""
-    strlink_fishingbobber3 = ""
+    strlink_fishingbobber3 = []
     strlink_fishingbobber4 = ""
+    strlink_fishingbobber_fin = ""
 
-    def string_splicing_fishingbobber(self):
+    def string_splicing_fishingbobber(self, event=0):
         self.Text_fishingbobber.delete(1.0,'end')
 
         array_enchant_str = []
@@ -878,12 +983,14 @@ class Application(tk.Frame):
         global strlink_fishingbobber2
         global strlink_fishingbobber3
         global strlink_fishingbobber4
+        global strlink_fishingbobber_fin
         index = 0
 
         self.strlink_fishingbobber1 = []
         self.strlink_fishingbobber2 = ""
-        self.strlink_fishingbobber2 = ""
-        self.strlink_fishingbobber2 = ""
+        self.strlink_fishingbobber3 = []
+        self.strlink_fishingbobber4 = ""
+        self.strlink_fishingbobber_fin = ""
 
         for str_ in self.array_fishingbobber_enchant:
             if str_.get() != "0":
@@ -899,72 +1006,75 @@ class Application(tk.Frame):
                     self.strlink_fishingbobber2 = self.strlink_fishingbobber2 + ','
             self.strlink_fishingbobber2 = self.strlink_fishingbobber2 + ']'
 
-        if self.str_fishingbobber_extra.get() != "0" and self.strlink_fishingbobber2 != "":
-            self.strlink_fishingbobber3 = '{' + self.str_fishingbobber_extra.get() + ',' + self.strlink_fishingbobber2 + '}'
-        elif self.str_fishingbobber_extra.get() == "0" and self.strlink_fishingbobber2 != "":
-            self.strlink_fishingbobber3 = '{' + self.strlink_fishingbobber2 + '}'
-        elif self.str_fishingbobber_extra.get() != "0" and self.strlink_fishingbobber2 == "":
-            self.strlink_fishingbobber3 = '{' + self.str_fishingbobber_extra.get() + '}'
+        if self.str_fishingbobber_extra.get() != "0":
+            self.strlink_fishingbobber3.append(self.str_fishingbobber_extra.get())
+        if self.str_fishingbobber_name.get() != "":
+            self.strlink_fishingbobber3.append('display:{Name:"[{\\"text\":\\"%s\\"}]"}' %(self.str_fishingbobber_name.get()))
+        if self.strlink_fishingbobber2 != "":
+            self.strlink_fishingbobber3.append(self.strlink_fishingbobber2)
+
+        for str_ in self.strlink_fishingbobber3:
+            self.strlink_fishingbobber4 = self.strlink_fishingbobber4 + str_
+            if str_ != self.strlink_fishingbobber3[-1]:
+                self.strlink_fishingbobber4 = self.strlink_fishingbobber4+ ','
 
         if self.str_fishingbobber.get() != "0":
-            self.strlink_fishingbobber4 = '/give @s ' + self.str_fishingbobber.get() + self.strlink_fishingbobber3 + ' 1'
+            self.strlink_fishingbobber_fin = '/give @s ' + self.str_fishingbobber.get() + '{' + self.strlink_fishingbobber4 + '} 1'
 
     def output_weapon(self):
-        global strlink_weapon4
+        global strlink_waepon_fin
         self.Text_weapon.delete(1.0,'end')
-        self.Text_weapon.insert(1.0,self.strlink_weapon4)
-        self.str_num_weapon.set('当前命令包含的字符个数为：%s' %(len(self.strlink_weapon4)))
+        self.Text_weapon.insert(1.0,self.strlink_waepon_fin)
+        self.str_num_weapon.set('当前命令包含的字符个数为：%s' %(len(self.strlink_waepon_fin)))
         self.canvas_bg_weapon.delete(self.canvas_str_num_weapon)
-        self.canvas_str_num_weapon = self.canvas_bg_weapon.create_text(10,435, text=self.str_num_weapon.get(), anchor = tk.W)
-
+        self.canvas_str_num_weapon = self.canvas_bg_weapon.create_text(10,495, text=self.str_num_weapon.get(), anchor = tk.W)
 
     def output_tool(self):
-        global strlink_tool4
+        global strlink_tool_fin
         self.Text_tool.delete(1.0,'end')
-        self.Text_tool.insert(1.0,self.strlink_tool4)
-        self.str_num_tool.set('当前命令包含的字符个数为：%s' %(len(self.strlink_tool4)))
+        self.Text_tool.insert(1.0,self.strlink_tool_fin)
+        self.str_num_tool.set('当前命令包含的字符个数为：%s' %(len(self.strlink_tool_fin)))
         self.canvas_bg_tool.delete(self.canvas_str_num_tool)
-        self.canvas_str_num_tool = self.canvas_bg_tool.create_text(10,435, text=self.str_num_tool.get(), anchor = tk.W)
+        self.canvas_str_num_tool = self.canvas_bg_tool.create_text(10,495, text=self.str_num_tool.get(), anchor = tk.W)
 
     def output_armor(self):
-        global strlink_armor4
+        global strlink_armor_fin
         self.Text_armor.delete(1.0,'end')
-        self.Text_armor.insert(1.0,self.strlink_armor4)
-        self.str_num_armor.set('当前命令包含的字符个数为：%s' %(len(self.strlink_armor4)))
+        self.Text_armor.insert(1.0,self.strlink_armor_fin)
+        self.str_num_armor.set('当前命令包含的字符个数为：%s' %(len(self.strlink_armor_fin)))
         self.canvas_bg_armor.delete(self.canvas_str_num_armor)
-        self.canvas_str_num_armor = self.canvas_bg_armor.create_text(10,435, text=self.str_num_armor.get(), anchor = tk.W)
-
+        self.canvas_str_num_armor = self.canvas_bg_armor.create_text(10,495, text=self.str_num_armor.get(), anchor = tk.W)
     def output_bow(self):
-        global strlink_bow4
+        global strlink_bow_fin
         self.Text_bow.delete(1.0,'end')
-        self.Text_bow.insert(1.0,self.strlink_bow4)
-        self.str_num_bow.set('当前命令包含的字符个数为：%s' %(len(self.strlink_bow4)))
+        self.Text_bow.insert(1.0,self.strlink_bow_fin)
+        self.str_num_bow.set('当前命令包含的字符个数为：%s' %(len(self.strlink_bow_fin)))
         self.canvas_bg_bow.delete(self.canvas_str_num_bow)
-        self.canvas_str_num_bow = self.canvas_bg_bow.create_text(10,435, text=self.str_num_bow.get(), anchor = tk.W)
+        self.canvas_str_num_bow = self.canvas_bg_bow.create_text(10,495, text=self.str_num_bow.get(), anchor = tk.W)
 
     def output_crossbow(self):
-        global strlink_crossbow4
+        global strlink_crossbow_fin
         self.Text_crossbow.delete(1.0,'end')
-        self.Text_crossbow.insert(1.0,self.strlink_crossbow4)
-        self.str_num_crossbow.set('当前命令包含的字符个数为：%s' %(len(self.strlink_crossbow4)))
+        self.Text_crossbow.insert(1.0,self.strlink_crossbow_fin)
+        self.str_num_crossbow.set('当前命令包含的字符个数为：%s' %(len(self.strlink_crossbow_fin)))
         self.canvas_bg_crossbow.delete(self.canvas_str_num_crossbow)
-        self.canvas_str_num_crossbow = self.canvas_bg_crossbow.create_text(10,435, text=self.str_num_crossbow.get(), anchor = tk.W)
+        self.canvas_str_num_crossbow = self.canvas_bg_crossbow.create_text(10,495, text=self.str_num_crossbow.get(), anchor = tk.W)
 
     def output_trident(self):
-        global strlink_trident4
+        global strlink_trident_fin
         self.Text_trident.delete(1.0,'end')
-        self.Text_trident.insert(1.0,self.strlink_trident4)
-        self.str_num_trident.set('当前命令包含的字符个数为：%s' %(len(self.strlink_trident4)))
+        self.Text_trident.insert(1.0,self.strlink_trident_fin)
+        self.str_num_trident.set('当前命令包含的字符个数为：%s' %(len(self.strlink_trident_fin)))
         self.canvas_bg_trident.delete(self.canvas_str_num_trident)
-        self.canvas_str_num_trident = self.canvas_bg_trident.create_text(10,435, text=self.str_num_trident.get(), anchor = tk.W)
+        self.canvas_str_num_trident = self.canvas_bg_trident.create_text(10,495, text=self.str_num_trident.get(), anchor = tk.W)
 
     def output_fishingbobber(self):
-        global strlink_fishingbobber4
+        global strlink_fishingbobber_fin
         self.Text_fishingbobber.delete(1.0,'end')
-        self.Text_fishingbobber.insert(1.0,self.strlink_fishingbobber4)
-        self.str_num_fishingbobber.set('命令包含的字符个数为：%s' %(len(self.strlink_fishingbobber4)))
+        self.Text_fishingbobber.insert(1.0,self.strlink_fishingbobber_fin)
+        self.str_num_fishingbobber.set('命令包含的字符个数为：%s' %(len(self.strlink_fishingbobber_fin)))
         self.canvas_bg_fishingbobber.delete(self.canvas_str_num_fishingbobber)
-        self.canvas_str_num_fishingbobber = self.canvas_bg_fishingbobber.create_text(10,435, text=self.str_num_fishingbobber.get(), anchor = tk.W)
+        self.canvas_str_num_fishingbobber = self.canvas_bg_fishingbobber.create_text(10,495, text=self.str_num_fishingbobber.get(), anchor = tk.W)
 
 def resource_path(relative_path):
     if getattr(sys, 'frozen', False):
